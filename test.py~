@@ -1,0 +1,4 @@
+from ui.control import Contoller
+
+ctrl = Controller('c:\\config.yml')
+ctrl.start()

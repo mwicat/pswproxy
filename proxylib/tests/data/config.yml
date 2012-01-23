@@ -1,0 +1,23 @@
+general:
+  host: ''
+  port: 3128
+
+filter:
+  active: no
+  paranoid: no
+  blacklist: c:\blacklist.txt
+
+replacer:
+  active: yes
+  resizer:
+    active: yes
+    ratio: 0.25
+  rotator:
+    active: yes
+    degree: 45
+  imgresizer:
+    active: yes
+    ratio: 0.25
+
+fetcher:
+  active: yes

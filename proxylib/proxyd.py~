@@ -1,0 +1,13 @@
+class ProxyDaemon(ThreadingMixIn, HTTPServer):
+    pass
+
+class RequestHandler(BaseHTTPRequestHandler):
+
+    def do_GET(self):
+        pass
+
+
+def main():
+    addr = 'localhost', 8070
+    server = (addr, MyHandler)
+    server.serve_forever()

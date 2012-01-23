@@ -1,0 +1,8 @@
+general:
+  host: 127.0.0.1
+  port: 3128
+
+filter:
+  active: yes
+  paranoid: no
+  whitelist: c:\blacklist.txt

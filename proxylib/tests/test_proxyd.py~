@@ -1,0 +1,22 @@
+import unittest
+import mox
+import Image
+from StringIO import StringIO
+from mimetools import Message
+from common import create_response_mock
+
+import sys
+sys.path.append('../..')
+from proxylib.common import ProxyResponse
+from proxyd import RequestHandler
+
+class ImageHandlerTestCase(unittest.TestCase):
+
+    def setUp(self):
+        imgfile = open('data/image_resp_body.jpg', 'rb')
+        self.img_data = imgfile.read()
+        self.img = Image.open(StringIO(self.img_data))
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,0 +1,4 @@
+from ui.gtk import MainApp
+
+app = MainApp()
+app.start()

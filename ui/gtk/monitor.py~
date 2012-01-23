@@ -1,0 +1,96 @@
+#!/usr/bin/env python
+# -*- coding: iso-8859-2 -*-
+
+import gtk
+from ui.control import Controller
+
+def quit_cb(widget, data = None):
+    if data:
+        data.set_visible(False)
+        gtk.main_quit()
+
+class StatusIcc:
+
+    def activate( self, widget, data=None):
+        pass
+
+    def  show_hide(self, widget,response_id, data= None):
+        if response_id == gtk.RESPONSE_YES:
+                widget.hide()
+        else:
+                widget.hide()
+
+     def  destroyer(self, widget,response_id, data= None):
+        if response_id == gtk.RESPONSE_OK:
+                gtk.main_quit()
+        else:
+                widget.hide()
+
+     def popup(self, button, widget, time, data=None):
+        self.menu.show_all()
+        self.menu.popup(None, None, None, 3, time)
+
+    def __init__(self, app):
+        self.app = app
+        self._build_menu()
+        self.staticon = gtk.StatusIcon()
+        self.staticon.set_blinking(True)
+        self.staticon.connect("activate", self.restart_proxy)
+        self.staticon.connect("popup_menu", self.popup)
+        self.staticon.set_visible(True)
+        gtk.main()
+
+    def start_proxy(self):
+        self.set_started()
+        self.app.ctrl.start()
+
+    def stop_proxy(self):
+        self.set_stopped()
+        self.app.ctrl.stop()
+
+    def restart_proxy(self):
+        self.set_stopped()
+        self.app.ctrl.restart()
+        self.set_started()
+
+    def set_stopped(self):
+        self.staticon.set_tooltip(u'PSWProxy wy³±czone')
+        self.staticon.set_from_file("proxy_down.png")
+
+    def set_started(self):
+        self.staticon.set_tooltip(u'PSWProxy w³±czone')
+        self.staticon.set_from_file("proxy_up.png")
+        
+    def _build_menu(self):
+        self.menu = gtk.Menu()
+        menuItem = gtk.ImageMenuItem(gtk.STOCK_CONNECT)
+        menuItem.child.set_text(u'Uruchom')
+        menuItem.connect('activate', self.start_proxy)
+        self.menu.append(menuItem)
+
+        menuItem = gtk.ImageMenuItem(gtk.STOCK_REFRESH)
+        menuItem.child.set_text(u'Restartuj')
+        menuItem.connect('activate', self.restart_proxy)
+        self.menu.append(menuItem)
+
+        menuItem = gtk.ImageMenuItem(gtk.STOCK_STOP)
+        menuItem.child.set_text(u'Wy³±cz')
+        menuItem.connect('activate', self.stop_proxy)
+        self.menu.append(menuItem)
+
+        menuItem = gtk.ImageMenuItem(gtk.STOCK_QUIT)
+        menuItem.child.set_text(u'Zakoñcz')
+        menuItem.connect('activate', quit_cb, self)
+        self.menu.append(menuItem)
+
+class MainApp:
+
+    def __init__(self):
+        self.ctrl = Controller('c:\\config.yml')
+
+    def start(self):
+        self.statusicon = StatusIcc(self) 
+
+if __name__ == "__main__":
+    app = MainApp()
+    app.start()

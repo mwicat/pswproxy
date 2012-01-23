@@ -1,0 +1,38 @@
+general:
+  host: 'localhost'
+  port: 3128
+
+filter:
+  active: True
+  action: 'allow'
+  whitelist: 'whitelist.txt'
+  blacklist: 'blacklist.txt'
+  paranoid: False
+
+replacer:
+  active: True
+  rules: 'rules.txt'
+
+footer:
+  active: True
+  content: 'footer.html'
+
+resizer:
+  active: False
+  ratio: 0.5
+
+rotator:
+  active: True
+  degree: 15
+
+cenzor:
+  active: False
+
+imgresizer:
+  active: False
+
+fetcher:
+  voice: False
+
+logger:
+  active: False

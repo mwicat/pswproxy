@@ -1,0 +1,10 @@
+HTTP/1.x 200 OK
+Date: Sat, 16 Jan 2010 17:42:02 GMT
+Server: Apache/2.2.X (OVH)
+Last-Modified: Sun, 22 Feb 2009 12:43:08 GMT
+Etag: "625fa-20bab-463813a685e91"
+Accept-Ranges: bytes
+Content-Length: 134059
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: image/jpeg

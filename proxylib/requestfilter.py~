@@ -1,0 +1,10 @@
+class RequestFilter:
+
+    DENY, ALLOW = range(2)
+
+    def __init__(self, whitelist, blacklist, action=self.ALLOW):
+        self.whitelist = whitelist
+        self.blacklist = blacklist
+
+    def check(self, request):
+        return True

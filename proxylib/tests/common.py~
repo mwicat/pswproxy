@@ -1,0 +1,4 @@
+def init_response_mock(resp_mock):
+    attrs = 'msg', 'version', 'status', 'reason'
+    for attr in attrs:
+        setattr(resp_mock, attr, None)
